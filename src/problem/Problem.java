@@ -1,4 +1,4 @@
-package main;
+package problem;
 
 public abstract class Problem {
     private long startTime;
