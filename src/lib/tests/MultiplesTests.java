@@ -39,22 +39,37 @@ public class MultiplesTests {
     }
 
     @Test
-    public void lcm_32_6() {
+    public void lcm_3and2_6() {
         assertEquals(6, lcm(2, 3));
     }
 
     @Test
-    public void lcm_732_42() {
+    public void lcm_7and3and2_42() {
         assertEquals(42, lcm(7, 3, 2));
     }
 
     @Test
-    public void lcm_93_9() {
+    public void lcm_9and3_9() {
         assertEquals(9, lcm(9, 3));
     }
 
     @Test
-    public void lcm_1052_10() {
+    public void lcm_10and5and2_10() {
         assertEquals(10, lcm(10, 5, 2));
+    }
+
+    @Test
+    public void sumMultsUpTo_mult3max10_18() {
+        assertEquals(18, sumMultsUpTo(3, 10));
+    }
+
+    @Test
+    public void sumMultsUpTo_mult5max20_30() {
+        assertEquals(30, sumMultsUpTo(5, 20));
+    }
+
+    @Test
+    public void sumMultsUpTo_mult5max21_50() {
+        assertEquals(50, sumMultsUpTo(5, 21));
     }
 }

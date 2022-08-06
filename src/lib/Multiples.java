@@ -52,4 +52,20 @@ public class Multiples {
         }
         return mult;
     }
+
+    /**
+     * O(1)
+     */
+    public static int sumMultsUpTo(int n, int max) {
+        int highestSummedMult = Multiples.greatestMultipleLessThan(n, max);
+        int sumOfOneMultPair = n + highestSummedMult;
+        int numMultPairs = (highestSummedMult / 2) / n;
+        // ^ e.g. mults of 5 less than 20: 15 / 2 = 7, 7 / 5 = 1
+        // ^ e.g. mults of 5 less than 21: 20 / 2 = 10, 10 / 5 = 2
+        int sum = sumOfOneMultPair * numMultPairs;
+        if (highestSummedMult / n > 2 * numMultPairs) {
+            sum += sumOfOneMultPair / 2;
+        }
+        return sum;
+    }
 }
