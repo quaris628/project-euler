@@ -1,4 +1,7 @@
-# The contents of this file were copied from:
+# My custom additions
+/src/problem/*
+
+# The below contents of this file were copied from:
 # https://gist.github.com/alifa98/afecac889d14fff0ade363cc5e079fd7
 
 # Compiled class file
