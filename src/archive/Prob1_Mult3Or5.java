@@ -1,7 +1,7 @@
 package archive;
 
 
-import problem.Problem;
+import main.Problem;
 
 import static lib.Multiples.sumMultsUpTo;
 

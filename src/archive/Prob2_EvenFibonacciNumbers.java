@@ -1,7 +1,7 @@
 package archive;
 
 import lib.Fibonacci;
-import problem.Problem;
+import main.Problem;
 
 import java.util.LinkedList;
 
