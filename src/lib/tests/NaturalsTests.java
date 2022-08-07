@@ -18,4 +18,16 @@ public class NaturalsTests {
         assertEquals(6, sumUpTo(3));
     }
 
+    @Test
+    public void generate_5_12345() {
+        int[] naturals = generate(5);
+
+        assertEquals(5, naturals.length);
+        assertEquals(1, naturals[0]);
+        assertEquals(2, naturals[1]);
+        assertEquals(3, naturals[2]);
+        assertEquals(4, naturals[3]);
+        assertEquals(5, naturals[4]);
+    }
+
 }
