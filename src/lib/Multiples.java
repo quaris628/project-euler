@@ -1,5 +1,7 @@
 package lib;
 
+import java.util.Collection;
+
 import static lib.util.Arrs.*;
 
 public class Multiples {
@@ -33,7 +35,7 @@ public class Multiples {
     }
 
     /**
-     * O(num args + num args * args product / max arg)
+     * O(num args + num args * product of args / largest arg)
      */
     public static int lcm(int... args) {
         int max = max(args);
@@ -56,7 +58,7 @@ public class Multiples {
     /**
      * O(1)
      */
-    public static int sumMultsUpTo(int n, int max) {
+    public static int sumMultsLessThan(int n, int max) {
         int highestSummedMult = Multiples.greatestMultipleLessThan(n, max);
         int sumOfOneMultPair = n + highestSummedMult;
         int numMultPairs = (highestSummedMult / 2) / n;
@@ -67,5 +69,17 @@ public class Multiples {
             sum += sumOfOneMultPair / 2;
         }
         return sum;
+    }
+
+
+    /**
+     * O((max / multsOf) * [collection's .remove() time complexity])
+     * upTo bound is inclusive
+     * Does not remove multsOf, only multsOf*2, multsOf*3, etc.
+     */
+    public static void removeMultiplesOf(int multsOf, Collection<Integer> from, int upTo) {
+        for (int multiple = multsOf * 2; multiple <= upTo; multiple += multsOf) {
+            from.remove(multiple);
+        }
     }
 }

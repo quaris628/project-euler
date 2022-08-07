@@ -3,7 +3,7 @@ package archive;
 
 import main.Problem;
 
-import static lib.Multiples.sumMultsUpTo;
+import static lib.Multiples.sumMultsLessThan;
 
 /**
  * If we list all the natural numbers below 10 that are
@@ -25,13 +25,13 @@ public class Prob1_Mult3Or5 extends Problem {
         }
         log(sum);
 
-        int sumMult3 = sumMultsUpTo(3, MAX);
+        int sumMult3 = sumMultsLessThan(3, MAX);
         log("Sum mults 3", sumMult3);
 
-        int sumMult5 = sumMultsUpTo(5, MAX);
+        int sumMult5 = sumMultsLessThan(5, MAX);
         log("Sum mults 5", sumMult5);
 
-        int sumMult15 = sumMultsUpTo(15, MAX);
+        int sumMult15 = sumMultsLessThan(15, MAX);
         log("Sum mults 15", sumMult15);
 
         return sumMult3 + sumMult5 - sumMult15;

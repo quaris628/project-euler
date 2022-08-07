@@ -2,6 +2,9 @@ package lib.tests;
 
 import org.junit.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static lib.Multiples.*;
 import static org.junit.Assert.*;
 
@@ -59,17 +62,36 @@ public class MultiplesTests {
     }
 
     @Test
-    public void sumMultsUpTo_mult3max10_18() {
-        assertEquals(18, sumMultsUpTo(3, 10));
+    public void sumMultsLessThan_mult3max10_18() {
+        assertEquals(18, sumMultsLessThan(3, 10));
     }
 
     @Test
-    public void sumMultsUpTo_mult5max20_30() {
-        assertEquals(30, sumMultsUpTo(5, 20));
+    public void sumMultsLessThan_mult5max20_30() {
+        assertEquals(30, sumMultsLessThan(5, 20));
     }
 
     @Test
-    public void sumMultsUpTo_mult5max21_50() {
-        assertEquals(50, sumMultsUpTo(5, 21));
+    public void sumMultsLessThan_mult5max21_50() {
+        assertEquals(50, sumMultsLessThan(5, 21));
+    }
+
+    @Test
+    public void removeMultiplesOf_2from123456upTo6_1235() {
+        Set<Integer> set = new HashSet<Integer>();
+        set.add(1);
+        set.add(2);
+        set.add(3);
+        set.add(4);
+        set.add(5);
+        set.add(6);
+
+        removeMultiplesOf(2, set, 6);
+
+        assertEquals(4, set.size());
+        assertTrue(set.contains(1));
+        assertTrue(set.contains(2));
+        assertTrue(set.contains(3));
+        assertTrue(set.contains(5));
     }
 }
