@@ -35,15 +35,16 @@ public class Multiples {
     }
 
     /**
-     * O(num args + num args * product of args / largest arg)
+     * O(num args * (1 + product of args / largest arg) )
      */
-    public static int lcm(int... args) {
+    public static long lcm(int... args) {
         int max = max(args);
-        int product = product(args);
+        long product = productCheckOverflow(args);
 
-        int mult;
+        long mult;
+        boolean allDivide;
         for (mult = max; mult < product; mult+=max) {
-            boolean allDivide = true;
+            allDivide = true;
             for (int item : args) {
                 if (mult % item != 0) {
                     allDivide = false;

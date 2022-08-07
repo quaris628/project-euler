@@ -61,6 +61,13 @@ public class MultiplesTests {
         assertEquals(10, lcm(10, 5, 2));
     }
 
+
+    @Test
+    public void lcm_1thru10_2520() {
+        int[] nums = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        assertEquals(2520, lcm(nums));
+    }
+
     @Test
     public void sumMultsLessThan_mult3max10_18() {
         assertEquals(18, sumMultsLessThan(3, 10));

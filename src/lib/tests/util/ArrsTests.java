@@ -3,7 +3,7 @@ package lib.tests.util;
 import org.junit.Test;
 
 import static lib.util.Arrs.*;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class ArrsTests {
     public ArrsTests() {}
@@ -15,9 +15,38 @@ public class ArrsTests {
     }
 
     @Test
-    public void product_12345_15() {
+    public void product_12345_120() {
         int[] arr = new int[] {1, 2, 3, 4, 5};
         assertEquals(120, product(arr));
+    }
+
+    @Test
+    public void product_1thru30_negative() {
+        int[] arr = new int[] {
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+                11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+                21, 22, 23, 24, 25, 26, 27, 28, 29, 30};
+        assertTrue(product(arr) < 0);
+    }
+
+    @Test
+    public void productCheckOverflow_12345_120() {
+        int[] arr = new int[] {1, 2, 3, 4, 5};
+        assertEquals(120, productCheckOverflow(arr));
+    }
+
+    @Test
+    public void productCheckOverflow_1thru30_ArithmeticException() {
+        int[] arr = new int[] {
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+                11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+                21, 22, 23, 24, 25, 26, 27, 28, 29, 30};
+        try {
+            productCheckOverflow(arr);
+            fail();
+        } catch (ArithmeticException e) {
+            assertTrue(true);
+        }
     }
 
     @Test

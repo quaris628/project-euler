@@ -13,13 +13,29 @@ public class Arrs {
         return sum;
     }
 
+    /**
+     * O(array size)
+     */
+    public static long product(int[] arr) {
+        long product = 1;
+        for (int item : arr) {
+            product *= item;
+        }
+        return product;
+    }
 
     /**
      * O(array size)
      */
-    public static int product(int[] arr) {
-        int product = 1;
+    public static long productCheckOverflow(int[] arr) {
+        long product = 1;
         for (int item : arr) {
+            if ((item > 0 && product * item < product
+                    || item < 0 && product * item > product)) {
+                throw new ArithmeticException(
+                        "Operation would cause overflow: "
+                        + product + " *= " + item);
+            }
             product *= item;
         }
         return product;
