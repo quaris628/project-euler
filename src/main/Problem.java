@@ -16,6 +16,7 @@ public abstract class Problem {
     }
 
     public int runTimed() {
+        System.out.println(this.getClass().getName().split("\\.")[1]);
         System.out.println(" ----- Starting -----");
         startTime = System.currentTimeMillis();
         int result = run();
