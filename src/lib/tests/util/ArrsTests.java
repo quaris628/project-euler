@@ -1,12 +1,12 @@
-package lib.tests;
+package lib.tests.util;
 
 import org.junit.Test;
 
-import static lib.ArrayUtilities.*;
+import static lib.util.Arrs.*;
 import static org.junit.Assert.assertEquals;
 
-public class ArrayUtilitiesTests {
-    public ArrayUtilitiesTests() {}
+public class ArrsTests {
+    public ArrsTests() {}
 
     @Test
     public void sum_12345_15() {

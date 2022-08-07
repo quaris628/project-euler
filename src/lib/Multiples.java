@@ -1,6 +1,6 @@
 package lib;
 
-import static lib.ArrayUtilities.*;
+import static lib.util.Arrs.*;
 
 public class Multiples {
 

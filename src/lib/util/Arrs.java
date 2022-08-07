@@ -1,6 +1,6 @@
-package lib;
+package lib.util;
 
-public class ArrayUtilities {
+public class Arrs {
 
     /**
      * O(array size)
