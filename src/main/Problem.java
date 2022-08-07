@@ -8,7 +8,7 @@ public abstract class Problem {
     private long doNotCountTime;
 
     protected Problem() {
-        // make it obvious that startTime and endTime are garbage values
+        // make it obvious that initial startTime and endTime are garbage values
         startTime = -1;
         endTime = -2; // make endTime be before startTime so difference is negative
         // doNotCountTime starts with a legit 0 though
@@ -21,7 +21,8 @@ public abstract class Problem {
         int result = run();
         endTime = System.currentTimeMillis();
         System.out.println(" ----- Complete -----");
-        System.out.println("Time: " + formatTime(endTime - startTime - doNotCountTime));
+        System.out.print("Time: " + formatTime(endTime - startTime - doNotCountTime));
+        System.out.println(" (" + formatTime(doNotCountTime) + " uncounted)");
         System.out.println("Result: " + result);
         return result;
     }
