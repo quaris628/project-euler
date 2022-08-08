@@ -3,7 +3,7 @@ package archive;
 import lib.Naturals;
 import main.Problem;
 
-public class Prob4_SumSquareDifference extends Problem {
+public class Prob6_SumSquareDifference extends Problem {
 
     public final static int MAX = 100;
 
