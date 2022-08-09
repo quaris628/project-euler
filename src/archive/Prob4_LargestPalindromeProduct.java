@@ -1,4 +1,4 @@
-package problem;
+package archive;
 
 import lib.Digits;
 import main.Problem;
@@ -13,21 +13,39 @@ import main.Problem;
 public class Prob4_LargestPalindromeProduct extends Problem {
     @Override
     protected int run() {
-        // Look at all palindromic numbers (starting with 997799 then decreasing)
-        for (int palindromePart = 997; palindromePart >= 100; palindromePart--) {
-            int fullPalindrome = 0; // TODO
-        }
-        // test if this number has a pair of 3 digit numbers that divide it
 
-        return 0;
+        // Look at all palindromic numbers (starting with 997799 then decreasing)
+        for (int firstPart = 999; firstPart >= 100; firstPart--) {
+            int palindrome = buildEvenPalindrome(firstPart);
+            // test if this number has a pair of 3 digit numbers that divide it
+
+            // for each 3-digit number and its pair that makes their product be the palindrome,
+            // starting with 999 and decreasing until the number is less than its pair
+            for (int i = 999, pairNum = palindrome / 999; i >= pairNum; i--, pairNum = palindrome / i) {
+                if (i * pairNum == palindrome) {
+                    logTime("Finished");
+                    log("Num 1", i);
+                    log("Num 2", pairNum);
+                    return palindrome;
+                }
+            }
+        }
+
+        return -1;
     }
 
     /**
-     * palindromPart is first few digits, i.e. the more significant digits
+     * O(number of digits) i.e. O(log10(firstPart))
+     * firstPart is first few digits, i.e. the more significant digits
      */
-    private int buildPalindrome(int palindromePart) {
-        Digits.getArr(palindromePart);
-        return 0; // TODO
+    private int buildEvenPalindrome(int firstPart) {
+        int[] firstDigits = Digits.getArr(firstPart);
+        int[] allDigits = new int[firstDigits.length * 2];
+        for (int i = 0; i < firstDigits.length; i++) {
+            allDigits[firstDigits.length - 1 - i] = firstDigits[i];
+            allDigits[firstDigits.length + i] = firstDigits[i];
+        }
+        return Digits.buildNumFrom(allDigits);
     }
 
     // My notes
