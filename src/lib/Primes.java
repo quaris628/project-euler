@@ -57,6 +57,14 @@ public class Primes {
     }
 
     /**
+     * @param primes Assumes to contain only primes
+     * @param currentMax Value for which all primes less than are contained in primes
+     */
+    public static void generateExpandingOn(Collection<Integer> primes, int upTo, int currentMax) {
+
+    }
+
+    /**
      * O(sqrt(num))
      */
     public static boolean isPrime(int num) {

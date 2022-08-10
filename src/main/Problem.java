@@ -36,21 +36,25 @@ public abstract class Problem {
         doNotCountTime += System.currentTimeMillis() - startDoNotCountTime;
     }
 
-    protected void log(String message, Object o) {
+    protected void log(Object message, Object o) {
         long startDoNotCountTime = System.currentTimeMillis();
-        System.out.println(message + ": " + o);
+        System.out.print(message);
+        System.out.print(": ");
+        System.out.println(o);
         doNotCountTime += System.currentTimeMillis() - startDoNotCountTime;
     }
 
     protected void logTime() {
         long startDoNotCountTime = System.currentTimeMillis();
-        System.out.println("t=" + formatTime(startDoNotCountTime - startTime - doNotCountTime));
+        System.out.print("t=");
+        System.out.println(formatTime(startDoNotCountTime - startTime - doNotCountTime));
         doNotCountTime += System.currentTimeMillis() - startDoNotCountTime;
     }
 
-    protected void logTime(String message) {
+    protected void logTime(Object message) {
         long startDoNotCountTime = System.currentTimeMillis();
-        System.out.print(message + ": t=");
+        System.out.print(message);
+        System.out.print("t=");
         System.out.println(formatTime(startDoNotCountTime - startTime - doNotCountTime));
         doNotCountTime += System.currentTimeMillis() - startDoNotCountTime;
     }
