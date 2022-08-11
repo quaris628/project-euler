@@ -15,11 +15,11 @@ public abstract class Problem {
         doNotCountTime = 0;
     }
 
-    public int runTimed() {
+    public long runTimed() {
         System.out.println(this.getClass().getName().split("\\.")[1]);
         System.out.println(" ----- Starting -----");
         startTime = System.currentTimeMillis();
-        int result = run();
+        long result = run();
         endTime = System.currentTimeMillis();
         System.out.println(" ----- Complete -----");
         System.out.print("Time: " + formatTime(endTime - startTime - doNotCountTime));
@@ -28,7 +28,7 @@ public abstract class Problem {
         return result;
     }
 
-    protected abstract int run();
+    protected abstract long run();
 
     protected void log(Object o) {
         long startDoNotCountTime = System.currentTimeMillis();

@@ -30,7 +30,7 @@ public class Prob8_LargestProductInASeries extends Problem {
             "71636269561882670428252483600823257530420752963450";
 
     @Override
-    protected int run() {
+    protected long run() {
         String[] zeroSplitSeq = SEQ.split("0");
         LinkedList<String> nonzeroSubSeqs = new LinkedList<>();
         for (String subSeq : zeroSplitSeq) {
@@ -69,11 +69,6 @@ public class Prob8_LargestProductInASeries extends Problem {
             }
         }
 
-        if (maxProduct >= Integer.MAX_VALUE) {
-            logTime("Problem complete");
-            log("Result", maxProduct);
-            throw new ArithmeticException("Result overflows signed integer values");
-        }
-        return (int) maxProduct;
+        return maxProduct;
     }
 }

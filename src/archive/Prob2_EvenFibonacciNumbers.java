@@ -8,7 +8,7 @@ import java.util.LinkedList;
 public class Prob2_EvenFibonacciNumbers extends Problem {
 
     @Override
-    protected int run() {
+    protected long run() {
         LinkedList<Integer> fibSeq = Fibonacci.generateLLLessThan(4000001);
         log("Last fib number:", fibSeq.getLast());
         int sum = 0;

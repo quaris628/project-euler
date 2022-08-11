@@ -17,7 +17,7 @@ import java.util.TreeSet;
 public class Prob3_LargestPrimeFactor extends Problem {
 
     @Override
-    protected int run() {
+    protected long run() {
         long number = 600851475143L;
         int numSqrt = (int)Math.sqrt(number);
 

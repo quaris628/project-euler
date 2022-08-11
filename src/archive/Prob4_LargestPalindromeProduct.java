@@ -12,7 +12,7 @@ import main.Problem;
 
 public class Prob4_LargestPalindromeProduct extends Problem {
     @Override
-    protected int run() {
+    protected long run() {
 
         // Look at all palindromic numbers (starting with 997799 then decreasing)
         for (int firstPart = 999; firstPart >= 100; firstPart--) {

@@ -8,7 +8,7 @@ public class Prob6_SumSquareDifference extends Problem {
     public final static int MAX = 100;
 
     @Override
-    protected int run() {
+    protected long run() {
         int sum = Naturals.sumUpTo(MAX);
         int sumSquared = sum * sum;
 

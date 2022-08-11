@@ -18,7 +18,7 @@ import java.util.TreeSet;
 public class Prob7_10001stPrime extends Problem {
 
     @Override
-    protected int run() {
+    protected long run() {
         SortedSet<Integer> primes = new TreeSet<>(Collections.reverseOrder());
         int stopAt = Integer.MAX_VALUE / 2;
         // double the maximum generated value until the resulting set has at least 10001 primes

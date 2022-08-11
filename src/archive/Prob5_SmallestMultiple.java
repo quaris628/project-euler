@@ -6,7 +6,7 @@ import main.Problem;
 
 public class Prob5_SmallestMultiple extends Problem {
     @Override
-    protected int run() {
+    protected long run() {
         long lcm = Multiples.lcm(Naturals.generate(20));
         if (lcm > Integer.MAX_VALUE) {
             logTime();

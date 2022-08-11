@@ -18,7 +18,7 @@ public class Prob9_SpecialPythagoreanTriplet extends Problem {
     public final static int SUM = 1000;
 
     @Override
-    protected int run() {
+    protected long run() {
         int a, b, c;
         int halfSumSq = SUM * SUM / 2;
         for (a = SUM / 2 - 1; a >= a - SUM && ((a*SUM - halfSumSq) % (a - SUM) != 0); a--) { }

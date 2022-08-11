@@ -17,7 +17,7 @@ public class Prob1_Mult3Or5 extends Problem {
     public final static int MAX = 1000;
 
     @Override
-    public int run() {
+    public long run() {
 
         int sum = 0;
         for (int i = 3; i < MAX; i+=3) {
