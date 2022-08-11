@@ -1,6 +1,6 @@
 package main;
 
-import problem.*;
+import problem.ActiveProblem;
 
 public class Main {
     public static void main(String[] args) {
