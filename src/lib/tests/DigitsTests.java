@@ -137,4 +137,36 @@ public class DigitsTests {
         digits.add(15);
         assertEquals(255, Digits.buildNumFrom(digits, 16));
     }
+
+    @Test
+    public void getIntValue_char3_int3() {
+        assertEquals(3, getIntValue('3'));
+    }
+
+    @Test
+    public void getIntValue_charA_IllegalArgumentException() {
+        try {
+            getIntValue('A');
+            fail();
+        } catch (IllegalArgumentException e) {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void getShortValue_char3_short3() {
+        short three = 3;
+        assertEquals(three, getShortValue('3'));
+    }
+
+    @Test
+    public void getShortValue_charA_IllegalArgumentException() {
+        try {
+            getShortValue('A');
+            fail();
+        } catch (IllegalArgumentException e) {
+            assertTrue(true);
+        }
+    }
+
 }
