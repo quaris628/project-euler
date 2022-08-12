@@ -30,4 +30,14 @@ public class NaturalsTests {
         assertEquals(5, naturals[4]);
     }
 
+    @Test
+    public void factorial_10_3628800() {
+        assertEquals(3628800, factorial(10).intValue());
+    }
+
+    @Test
+    public void factorial_1_1() {
+        assertEquals(1, factorial(1).intValue());
+    }
+
 }
