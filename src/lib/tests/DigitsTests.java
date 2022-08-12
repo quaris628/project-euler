@@ -3,6 +3,7 @@ package lib.tests;
 import lib.Digits;
 import org.junit.Test;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -13,7 +14,7 @@ public class DigitsTests {
     public DigitsTests() {}
 
     @Test
-    public void getArr_123_3and2and1() {
+    public void getArr_int123_3and2and1() {
         int[] digits = Digits.getArr(123);
 
         assertEquals(3, digits.length);
@@ -23,7 +24,7 @@ public class DigitsTests {
     }
 
     @Test
-    public void getArr_2_2() {
+    public void getArr_int2_2() {
         int[] digits = Digits.getArr(2);
 
         assertEquals(1, digits.length);
@@ -31,7 +32,7 @@ public class DigitsTests {
     }
 
     @Test
-    public void getArr_123base10_3and2and1() {
+    public void getArr_int123base10_3and2and1() {
         int[] digits = getArr(123, 10);
 
         assertEquals(3, digits.length);
@@ -41,7 +42,7 @@ public class DigitsTests {
     }
 
     @Test
-    public void getArr_255base16_15and15() {
+    public void getArr_int255base16_15and15() {
         int[] digits = getArr(255, 16);
 
         assertEquals(2, digits.length);
@@ -50,7 +51,37 @@ public class DigitsTests {
     }
 
     @Test
-    public void getInto_123LinkedList_3and2and1() {
+    public void getArr_bigInt2_2() {
+        BigInteger num = new BigInteger("2");
+        int[] digits = Digits.getArr(num);
+
+        assertEquals(1, digits.length);
+        assertEquals(2, digits[0]);
+    }
+
+    @Test
+    public void getArr_bigInt123base10_3and2and1() {
+        BigInteger num = new BigInteger("123");
+        int[] digits = getArr(num, 10);
+
+        assertEquals(3, digits.length);
+        assertEquals(3, digits[0]);
+        assertEquals(2, digits[1]);
+        assertEquals(1, digits[2]);
+    }
+
+    @Test
+    public void getArr_bigInt255base16_15and15() {
+        BigInteger num = new BigInteger("255");
+        int[] digits = getArr(num, 16);
+
+        assertEquals(2, digits.length);
+        assertEquals(15, digits[0]);
+        assertEquals(15, digits[1]);
+    }
+
+    @Test
+    public void getInto_int123LinkedList_3and2and1() {
         LinkedList<Integer> ll = new LinkedList<>();
         getInto(123, ll);
 
@@ -61,7 +92,7 @@ public class DigitsTests {
     }
 
     @Test
-    public void getInto_123base10LinkedList_3and2and1() {
+    public void getInto_int123base10LinkedList_3and2and1() {
         LinkedList<Integer> ll = new LinkedList<>();
         getInto(123, ll, 10);
 
@@ -72,7 +103,44 @@ public class DigitsTests {
     }
 
     @Test
-    public void getInto_255base16ArrayList_15and15() {
+    public void getInto_int255base16ArrayList_15and15() {
+        ArrayList<Integer> arrList = new ArrayList<>();
+        getInto(255, arrList, 16);
+
+        assertEquals(2, arrList.size());
+        assertEquals(Integer.valueOf(15), arrList.get(0));
+        assertEquals(Integer.valueOf(15), arrList.get(1));
+    }
+
+    @Test
+    public void getInto_bigInt123LinkedList_3and2and1() {
+        BigInteger num = new BigInteger("123");
+        LinkedList<Integer> ll = new LinkedList<>();
+
+        getInto(num, ll);
+
+        assertEquals(3, ll.size());
+        assertEquals(Integer.valueOf(3), ll.get(0));
+        assertEquals(Integer.valueOf(2), ll.get(1));
+        assertEquals(Integer.valueOf(1), ll.get(2));
+    }
+
+    @Test
+    public void getInto_bigInt123base10LinkedList_3and2and1() {
+        BigInteger num = new BigInteger("123");
+        LinkedList<Integer> ll = new LinkedList<>();
+
+        getInto(123, ll, 10);
+
+        assertEquals(3, ll.size());
+        assertEquals(Integer.valueOf(3), ll.get(0));
+        assertEquals(Integer.valueOf(2), ll.get(1));
+        assertEquals(Integer.valueOf(1), ll.get(2));
+    }
+
+    @Test
+    public void getInto_bigInt255base16ArrayList_15and15() {
+        BigInteger num = new BigInteger("255");
         ArrayList<Integer> arrList = new ArrayList<>();
         getInto(255, arrList, 16);
 

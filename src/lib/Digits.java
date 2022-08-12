@@ -1,5 +1,6 @@
 package lib;
 
+import java.math.BigInteger;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -7,9 +8,17 @@ public class Digits {
 
     /**
      * O(log_10(num))
-     * calls getArrOfDigits(num, 10)
+     * calls getArr(num, 10)
      */
     public static int[] getArr(int num) {
+        return getArr(num, 10);
+    }
+
+    /**
+     * O(log_10(num))
+     * calls getArr(num, 10)
+     */
+    public static int[] getArr(BigInteger num) {
         return getArr(num, 10);
     }
 
@@ -18,6 +27,21 @@ public class Digits {
      * Array is ordered by least to most significant place (digits[0] is ones place)
      */
     public static int[] getArr(int num, int base) {
+        LinkedList<Integer> digitsLL = new LinkedList<>();
+        getInto(num, digitsLL, base);
+        int[] digitsArr = new int[digitsLL.size()];
+        int i = 0;
+        for (int digit : digitsLL) {
+            digitsArr[i++] = digit;
+        }
+        return digitsArr;
+    }
+
+    /**
+     * O(log_base(num))
+     * Array is ordered by least to most significant place (digits[0] is ones place)
+     */
+    public static int[] getArr(BigInteger num, int base) {
         LinkedList<Integer> digitsLL = new LinkedList<>();
         getInto(num, digitsLL, base);
         int[] digitsArr = new int[digitsLL.size()];
@@ -45,6 +69,28 @@ public class Digits {
         while (num != 0) {
             digitsOutput.add(num % base);
             num /= base;
+        }
+    }
+
+    /**
+     * O(log_base(num) * [collection .add() time complexity])
+     * calls getInto(num, digitsOutput, 10)
+     */
+    public static void getInto(BigInteger num, Collection<Integer> digitsOutput) {
+        getInto(num, digitsOutput, 10);
+    }
+
+    /**
+     * O(log_base(num) * [collection .add() time complexity])
+     * Collection should (probably) be ordered to achieve intended functionality.
+     * Digits will be inserted in order of least to most significant place
+     */
+    public static void getInto(BigInteger num, Collection<Integer> digitsOutput, int base) {
+        BigInteger baseBigInt = new BigInteger(String.valueOf(base));
+        BigInteger zeroBigInt = new BigInteger("0");
+        while (!num.equals(zeroBigInt)) {
+            digitsOutput.add(num.mod(baseBigInt).intValue());
+            num = num.divide(baseBigInt);
         }
     }
 
