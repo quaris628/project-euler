@@ -1,0 +1,5 @@
+<component name="DependencyValidationManager">
+  <state>
+    <deny_rule from_scope="nonarchiveScopeShared" to_scope="archiveScopeShared" is_deny="true" />
+  </state>
+</component>
