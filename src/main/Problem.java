@@ -54,7 +54,7 @@ public abstract class Problem {
     protected void logTime(Object message) {
         long startDoNotCountTime = System.currentTimeMillis();
         System.out.print(message);
-        System.out.print("t=");
+        System.out.print(" t=");
         System.out.println(formatTime(startDoNotCountTime - startTime - doNotCountTime));
         doNotCountTime += System.currentTimeMillis() - startDoNotCountTime;
     }
