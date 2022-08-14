@@ -36,7 +36,16 @@ public abstract class Problem {
         doNotCountTime += System.currentTimeMillis() - startDoNotCountTime;
     }
 
-    protected void log(Object message, Object o) {
+    protected void log(Object... objs) {
+        long startDoNotCountTime = System.currentTimeMillis();
+        for (Object o : objs) {
+            System.out.print(o + " ");
+        }
+        System.out.println();
+        doNotCountTime += System.currentTimeMillis() - startDoNotCountTime;
+    }
+
+    protected void log(String message, Object o) {
         long startDoNotCountTime = System.currentTimeMillis();
         System.out.print(message);
         System.out.print(": ");
