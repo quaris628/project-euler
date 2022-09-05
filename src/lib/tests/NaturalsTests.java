@@ -40,4 +40,50 @@ public class NaturalsTests {
         assertEquals(1, factorial(1).intValue());
     }
 
+    @Test
+    public void isPerfectSquare_1_true() {
+        assertTrue(isPerfectSquare(1));
+    }
+
+    @Test
+    public void isPerfectSquare_2_false() {
+        assertFalse(isPerfectSquare(2));
+    }
+
+    @Test
+    public void isPerfectSquare_4_true() {
+        assertTrue(isPerfectSquare(4));
+    }
+
+    @Test
+    public void isPerfectSquare_5_false() {
+        assertFalse(isPerfectSquare(5));
+    }
+
+    @Test
+    public void isPerfectSquare_16_true() {
+        assertTrue(isPerfectSquare(16));
+    }
+
+    @Test
+    public void isPerfectSquare_17_false() {
+        assertFalse(isPerfectSquare(17));
+    }
+
+    @Test
+    public void isPerfectSquare_25_true() {
+        assertTrue(isPerfectSquare(25));
+    }
+
+    @Test
+    public void isPerfectSquare_100000000000000_true() {
+        assertTrue(isPerfectSquare(100000000000000L));
+    }
+
+    @Test
+    public void isPerfectSquare_100000000000001_false() {
+        assertFalse(isPerfectSquare(100000000000001L));
+    }
+
+
 }

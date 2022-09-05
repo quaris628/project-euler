@@ -31,4 +31,24 @@ public class Naturals {
         return factorial;
     }
 
+    public static boolean isPerfectSquare(int num) {
+        return isPerfectSquare((long)num);
+    }
+
+    public static boolean isPerfectSquare(long num) {
+        if (num <= 0) { return false; }
+        // stolen from:
+        // https://stackoverflow.com/questions/21997371/perfect-square-algorithm-explanation-for-the-implementation
+        // if num % 16 isn't a perfect square, num can't be either
+        switch ((short)(num & 0xF)) {
+            case 0:
+            case 1:
+            case 4:
+            case 9:
+                long sqrt = Math.round(Math.sqrt(num));
+                return sqrt * sqrt == num;
+            default:
+                return false;
+        }
+    }
 }
