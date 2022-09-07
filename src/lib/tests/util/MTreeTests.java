@@ -26,6 +26,20 @@ public class MTreeTests {
     }
 
     @Test
+    public void hasSub_sub1_hasSub1True() {
+        MTree<Integer, Object> tree = new MTree<Integer, Object>();
+        tree.sub(1);
+        assertTrue(tree.hasSub(1));
+    }
+
+    @Test
+    public void hasSub_sub1_hasSub2False() {
+        MTree<Integer, Object> tree = new MTree<Integer, Object>();
+        tree.sub(1);
+        assertFalse(tree.hasSub(2));
+    }
+
+    @Test
     public void sub_sub1_sub1getValueNull() {
         MTree<Integer, Object> tree = new MTree<Integer, Object>();
         tree.sub(1);

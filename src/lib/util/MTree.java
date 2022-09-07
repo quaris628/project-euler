@@ -17,6 +17,10 @@ public class MTree<SubType extends Comparable<SubType>, ValueType> implements It
         return !subscripts.isEmpty();
     }
 
+    public boolean hasSub(SubType subscript) {
+        return subscripts.containsKey(subscript);
+    }
+
     public MTree<SubType, ValueType> sub(SubType subscript) {
         MTree<SubType, ValueType> subTree = subscripts.get(subscript);
         if (subTree == null) {
