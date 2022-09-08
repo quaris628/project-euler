@@ -88,11 +88,8 @@ public class MTreeTests {
         tree2.sub(2);
         tree2.sub(8);
         tree2.sub(3).sub(6).setValue(7);
-
-        System.out.println(tree1);
-        System.out.println(tree2);
+        
         tree1.merge(tree2);
-        System.out.println(tree1);
 
         assertEquals("two", tree1.getValue());
 
