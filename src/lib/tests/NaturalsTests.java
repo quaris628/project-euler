@@ -41,48 +41,48 @@ public class NaturalsTests {
     }
 
     @Test
-    public void isPerfectSquare_1_true() {
-        assertTrue(isPerfectSquare(1));
+    public void isPerfectSquare_1_1() {
+        assertEquals(1, isPerfectSquare(1));
     }
 
     @Test
-    public void isPerfectSquare_2_false() {
-        assertFalse(isPerfectSquare(2));
+    public void isPerfectSquare_2_neg1() {
+        assertEquals(-1, isPerfectSquare(2));
     }
 
     @Test
-    public void isPerfectSquare_4_true() {
-        assertTrue(isPerfectSquare(4));
+    public void isPerfectSquare_4_2() {
+        assertEquals(2, isPerfectSquare(4));
     }
 
     @Test
-    public void isPerfectSquare_5_false() {
-        assertFalse(isPerfectSquare(5));
+    public void isPerfectSquare_5_neg1() {
+        assertEquals(-1, isPerfectSquare(5));
     }
 
     @Test
     public void isPerfectSquare_16_true() {
-        assertTrue(isPerfectSquare(16));
+        assertEquals(4, isPerfectSquare(16));
     }
 
     @Test
-    public void isPerfectSquare_17_false() {
-        assertFalse(isPerfectSquare(17));
+    public void isPerfectSquare_17_neg1() {
+        assertEquals(-1, isPerfectSquare(17));
     }
 
     @Test
     public void isPerfectSquare_25_true() {
-        assertTrue(isPerfectSquare(25));
+        assertEquals(5, isPerfectSquare(25));
     }
 
     @Test
     public void isPerfectSquare_100000000000000_true() {
-        assertTrue(isPerfectSquare(100000000000000L));
+        assertEquals(10000000L, isPerfectSquare(100000000000000L));
     }
 
     @Test
-    public void isPerfectSquare_100000000000001_false() {
-        assertFalse(isPerfectSquare(100000000000001L));
+    public void isPerfectSquare_100000000000001_neg1() {
+        assertEquals(-1, isPerfectSquare(100000000000001L));
     }
 
 
