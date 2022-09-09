@@ -1,5 +1,6 @@
 package lib.util;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.TreeMap;
 
@@ -65,7 +66,36 @@ public class MTree<SubType extends Comparable<SubType>, ValueType> implements It
 
     @Override
     public boolean equals(Object o) {
-        return this == o;
+        if (this == o) { return true; }
+        if (!(o instanceof MTree<?, ?> unparamTree)) { return false; }
+        if (!(Arrays.equals(
+                this.getClass().getTypeParameters(),
+                unparamTree.getClass().getTypeParameters()))) {
+            return false;
+        }
+        MTree<SubType, ValueType> tree = (MTree<SubType, ValueType>)unparamTree;
+
+        if (!(this.getValue() == null && tree.getValue() == null)
+                && this.getValue() != tree.getValue()
+                && !this.getValue().equals(tree.getValue())) {
+            return false;
+        }
+
+        Iterator<SubType> thisSubs = this.iterator();
+        Iterator<SubType> treeSubs = tree.iterator();
+        while (thisSubs.hasNext() && treeSubs.hasNext()) {
+            SubType thisSub = thisSubs.next();
+            SubType treeSub = treeSubs.next();
+            if (!thisSub.equals(treeSub)) {
+                return false;
+            }
+            MTree<SubType, ValueType> thisSubtree = this.sub(thisSub);
+            MTree<SubType, ValueType> treeSubtree = tree.sub(treeSub);
+            if (!thisSubtree.equals(treeSubtree)) {
+                return false;
+            }
+        }
+        return !(thisSubs.hasNext() || treeSubs.hasNext());
     }
 
     @Override

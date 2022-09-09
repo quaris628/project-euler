@@ -88,7 +88,7 @@ public class MTreeTests {
         tree2.sub(2);
         tree2.sub(8);
         tree2.sub(3).sub(6).setValue(7);
-        
+
         tree1.merge(tree2);
 
         assertEquals("two", tree1.getValue());
@@ -106,6 +106,153 @@ public class MTreeTests {
         assertFalse(iter.hasNext());
         assertEquals(5, tree1.sub(3).sub(4).getValue());
         assertEquals(7, tree1.sub(3).sub(6).getValue());
+    }
+
+    @Test
+    public void equals_same_true() {
+        MTree<Integer, String> tree1 = new MTree<Integer, String>();
+        tree1.setValue("A");
+        tree1.sub(1);
+        tree1.sub(2);
+        tree1.sub(3).sub(4).setValue("B");
+        tree1.sub(3).sub(4).sub(5);
+
+        MTree<Integer, String> tree2 = new MTree<Integer, String>();
+        tree2.setValue("A");
+        tree2.sub(1);
+        tree2.sub(2);
+        tree2.sub(3).sub(4).setValue("B");
+        tree2.sub(3).sub(4).sub(5);
+
+        assertTrue(tree1.equals(tree2));
+    }
+
+    @Test
+    public void equals_differentRootValue_false() {
+        MTree<Integer, String> tree1 = new MTree<Integer, String>();
+        tree1.setValue("A");
+        tree1.sub(1);
+        tree1.sub(2);
+        tree1.sub(3).sub(4).setValue("B");
+        tree1.sub(3).sub(4).sub(5);
+
+        MTree<Integer, String> tree2 = new MTree<Integer, String>();
+        tree2.setValue("C");
+        tree2.sub(1);
+        tree2.sub(2);
+        tree2.sub(3).sub(4).setValue("B");
+        tree2.sub(3).sub(4).sub(5);
+
+        assertFalse(tree1.equals(tree2));
+    }
+
+    @Test
+    public void equals_differentSubscripts_false() {
+        MTree<Integer, String> tree1 = new MTree<Integer, String>();
+        tree1.setValue("A");
+        tree1.sub(1);
+        tree1.sub(2);
+        tree1.sub(3).sub(4).setValue("B");
+        tree1.sub(3).sub(4).sub(5);
+
+        MTree<Integer, String> tree2 = new MTree<Integer, String>();
+        tree2.setValue("A");
+        tree2.sub(1);
+        tree2.sub(7);
+        tree2.sub(3).sub(4).setValue("B");
+        tree2.sub(3).sub(4).sub(5);
+
+        assertFalse(tree1.equals(tree2));
+    }
+
+    @Test
+    public void equals_differentNumberOfSubscripts_false() {
+        MTree<Integer, String> tree1 = new MTree<Integer, String>();
+        tree1.setValue("A");
+        tree1.sub(1);
+        tree1.sub(2);
+        tree1.sub(3).sub(4).setValue("B");
+        tree1.sub(3).sub(4).sub(5);
+
+        MTree<Integer, String> tree2 = new MTree<Integer, String>();
+        tree2.setValue("A");
+        tree2.sub(1);
+        tree2.sub(2);
+        tree2.sub(3).sub(4).setValue("B");
+        tree2.sub(3).sub(4).sub(5);
+        tree2.sub(8);
+
+        assertFalse(tree1.equals(tree2));
+    }
+
+    @Test
+    public void equals_differentSubtreeValue_false() {
+        MTree<Integer, String> tree1 = new MTree<Integer, String>();
+        tree1.setValue("A");
+        tree1.sub(1);
+        tree1.sub(2);
+        tree1.sub(3).sub(4).setValue("B");
+        tree1.sub(3).sub(4).sub(5);
+
+        MTree<Integer, String> tree2 = new MTree<Integer, String>();
+        tree2.setValue("A");
+        tree2.sub(1);
+        tree2.sub(2);
+        tree2.sub(3).sub(4).setValue("C");
+        tree2.sub(3).sub(4).sub(5);
+
+        assertFalse(tree1.equals(tree2));
+    }
+
+    @Test
+    public void equals_differentSubtreeSubscripts_false() {
+        MTree<Integer, String> tree1 = new MTree<Integer, String>();
+        tree1.setValue("A");
+        tree1.sub(1);
+        tree1.sub(2);
+        tree1.sub(3).sub(4).setValue("B");
+        tree1.sub(3).sub(4).sub(5);
+
+        MTree<Integer, String> tree2 = new MTree<Integer, String>();
+        tree2.setValue("A");
+        tree2.sub(1);
+        tree2.sub(2);
+        tree2.sub(3).sub(4).setValue("C");
+        tree2.sub(3).sub(4).sub(6);
+
+        assertFalse(tree1.equals(tree2));
+    }
+
+    @Test
+    public void equals_differentSubtreeNumberOfSubscripts_false() {
+        MTree<Integer, String> tree1 = new MTree<Integer, String>();
+        tree1.setValue("A");
+        tree1.sub(1);
+        tree1.sub(2);
+        tree1.sub(3).sub(4).setValue("B");
+        tree1.sub(3).sub(4).sub(5);
+
+        MTree<Integer, String> tree2 = new MTree<Integer, String>();
+        tree2.setValue("A");
+        tree2.sub(1);
+        tree2.sub(2);
+        tree2.sub(3).sub(4).setValue("C");
+        tree2.sub(3).sub(4).sub(5);
+        tree2.sub(3).sub(4).sub(6);
+
+        assertFalse(tree1.equals(tree2));
+    }
+
+    @Test
+    public void equals_againstNull_false() {
+        MTree<Integer, String> tree1 = new MTree<Integer, String>();
+        tree1.setValue("A");
+        tree1.sub(1);
+        tree1.sub(2);
+        tree1.sub(3).sub(4).setValue("B");
+        tree1.sub(3).sub(4).sub(5);
+
+        assertFalse(tree1.equals(null));
     }
 
 }
