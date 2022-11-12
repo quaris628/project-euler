@@ -49,6 +49,14 @@ public class ArrsTests {
         }
     }
 
+
+    @Test
+    public void getIndicesOfNSmallest_Integer25143and3_204() {
+        Integer[] arr = new Integer[] {2, 5, 1, 4, 3};
+        int[] indices = getIndicesOfNSmallest(arr, 3);
+        assertArrayEquals(new int[] {2, 0, 4}, indices);
+    }
+
     @Test
     public void max_Integer25143_5() {
         Integer[] arr = new Integer[] {2, 5, 1, 4, 3};

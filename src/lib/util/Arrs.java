@@ -42,10 +42,42 @@ public class Arrs {
     }
 
     /**
+     * O(array size * n)
+     * Returns the indices of the N smallest elements in the array
+     * For example, the 3 smallest elements of [5,2,3,1,4] are 1,2,3
+     */
+    public static <T extends Object & Comparable<T>> int[] getIndicesOfNSmallest(T[] arr, int n) {
+        int[] cheapestUnicorns = new int[n];
+
+        for(int i = 0; i < arr.length; i++) {
+            // edge case for first item
+            int j;
+            if (i >= cheapestUnicorns.length
+                    && arr[i].compareTo(arr[cheapestUnicorns[cheapestUnicorns.length - 1]]) >= 0) { // arr[i] >= arr[cheapestUnicorns[j]]
+                // no need to edit any of the array
+                continue;
+            } else {
+                j = Math.min(i, cheapestUnicorns.length - 1);
+                cheapestUnicorns[j] = i;
+            }
+
+            for (j--;j >= 0; j--) {
+                if (arr[i].compareTo(arr[cheapestUnicorns[j]]) >= 0) { // arr[i] >= arr[cheapestUnicorns[j]]
+                    break;
+                }
+                // essentially swaps smallestIndices[j] with smallestIndices[j + 1]
+                cheapestUnicorns[j + 1] = cheapestUnicorns[j];
+                cheapestUnicorns[j] = i;
+            }
+        }
+        return cheapestUnicorns;
+    }
+
+    /**
      * O(array size)
      * If there is a tie, returns whichever element comes first.
      */
-    public static <T extends Object & Comparable> T max(T[] arr) {
+    public static <T extends Object & Comparable<T>> T max(T[] arr) {
         if (arr == null) { throw new NullPointerException(); }
         if (arr.length == 0) { throw new IllegalArgumentException("Array must not be empty"); }
         T max = arr[0];
@@ -77,7 +109,7 @@ public class Arrs {
      * O(array size)
      * If there is a tie, returns whichever element comes first.
      */
-    public static <T extends Object & Comparable> int maxIndex(T[] arr) {
+    public static <T extends Object & Comparable<T>> int maxIndex(T[] arr) {
         if (arr == null) { throw new NullPointerException(); }
         if (arr.length == 0) { throw new IllegalArgumentException("Array must not be empty"); }
         T max = arr[0];
@@ -113,7 +145,7 @@ public class Arrs {
      * O(array size)
      * If there is a tie, returns whichever element comes first.
      */
-    public static <T extends Object & Comparable> T min(T[] arr) {
+    public static <T extends Object & Comparable<T>> T min(T[] arr) {
         if (arr == null) { throw new NullPointerException(); }
         if (arr.length == 0) { throw new IllegalArgumentException("Array must not be empty"); }
         T min = arr[0];
@@ -145,7 +177,7 @@ public class Arrs {
      * O(array size)
      * If there is a tie, returns whichever element comes first.
      */
-    public static <T extends Object & Comparable> int minIndex(T[] arr) {
+    public static <T extends Object & Comparable<T>> int minIndex(T[] arr) {
         if (arr == null) { throw new NullPointerException(); }
         if (arr.length == 0) { throw new IllegalArgumentException("Array must not be empty"); }
         T min = arr[0];
